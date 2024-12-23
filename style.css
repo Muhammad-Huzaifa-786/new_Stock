@@ -1,0 +1,284 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 2px solid black;
+    max-width: 500px;
+}
+
+
+/* Bottom row styling */
+table tr:last-child {
+    font-weight: bold;
+    background-color: #e6f7ff;
+    /* Light gray background */
+    border-top: 2px solid #000;
+    /* Bold top border */
+}
+
+/* Rightmost column styling */
+table td:last-child {
+    font-weight: bold;
+    background-color: #e6f7ff;
+    /* Light blue background */
+    border-left: 2px solid #000;
+    /* Bold left border */
+}
+
+table tr td:first-child {
+    font-weight: bold;
+    background-color: #e6f7ff;
+    /* Light blue background */
+    border-right: 2px solid #000;
+}
+
+table tr th:first-child {
+    font-weight: bold;
+    background-color: #e6f7ff;
+    /* Light blue background */
+    border-right: 2px solid #000;
+}
+
+table tr th:last-child {
+    font-weight: bold;
+    background-color: #e6f7ff;
+    /* Light blue background */
+    border-left: 2px solid #000;
+}
+
+table tr th {
+    font-weight: bold;
+    background-color: #e6f7ff;
+    /* Light blue background */
+    border-bottom: 2px solid #000;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+table tr td:first-child {
+    font-weight: bolder;
+
+}
+
+.container,
+.containerbox {
+    padding: 20px;
+    background-color: #f9f9f9;
+    /* Light background for distinction */
+    border: 1px solid #ddd;
+    /* Subtle border */
+    border-radius: 10px;
+    /* Smooth corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    overflow-x: auto;
+}
+
+#tableContainerbox,
+#resultTablebox,
+#tableContainer,
+#resultTable {
+    overflow-x: auto;
+}
+
+
+input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 140px;
+    font-size: 16px;
+    background-color: #eaf7ff;
+    /* Light blue tint */
+    border-radius: 7px;
+    border: 2px solid #ccc;
+    height: 22px;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle inner shadow */
+}
+
+
+button:hover {
+    background-color: #000000;
+    /* Darker shade */
+    color: azure;
+    transition: 0.7s;
+    border: 2px solid yellow;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 18px;
+    background-color: azure;
+    border-radius: 10px;
+    border: 2px solid grey;
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+#download button {
+    margin-top: 100px;
+}
+
+/* Styling for the accordion */
+.accordion-item {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    border-radius: 5px;
+} 
+.accordion-header {
+    background-color: #e6f7ff;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.accordion-content {
+    display: none;
+    overflow: auto;
+    
+    /* Initially hidden */
+
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+/* Styling for the accordion */
+.accordions-item {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordions-header {
+    background-color: #e6f7ff;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.accordions-content {
+    display: none;
+    /* Initially hidden */
+    overflow: auto;
+
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+.copy-button {
+    padding: 2px 10px;
+    background-color: yellow;
+    color: black;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+}
+
+#resultTable td {
+    border: 2px solid black;
+    font-weight: 400;
+    background-color: white;
+}
+
+#resultTable th {
+    border: 2px solid black;
+    font-weight: 600;
+    background-color: #e6f7ff;
+
+}
+
+#resultTablebox td {
+    border: 2px solid black;
+    font-weight: 400;
+    background-color: white;
+}
+
+#resultTablebox th {
+    border: 2px solid black;
+    font-weight: 600;
+    background-color: #e6f7ff;
+}
+
+/* Scroll-to-top button styling */
+.scroll-to-top {
+    position: fixed;
+    bottom: 1px;
+    right: 10px;
+    width: 30px;
+    font-weight: bold;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background-color: #78b9ff;
+    color: #000;
+    border: none;
+    /* Darker blue on hover */
+}
+.refresh {
+    position: fixed;
+    bottom: 1px;
+    left: 10px;
+    width: 70px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.refresh:hover {
+    background-color: #78b9ff;
+    color: #000;
+    border: none;
+    /* Darker blue on hover */
+}
+
+.abc{
+    color: blue;
+    font-size: 30px !important;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Code Table</title>
+    <link rel="shortcut icon" href="download.jpeg" type="image/x-icon">
+    <link rel="icon" href="download.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="number-container">
+        <center>
+            <div id="container" class="container">
+                <h2>Art No.</h2>
+                <input type="text" id="styleCodeInput" placeholder="Art No.">
+                <button onclick="generateTable()">Generate</button>
+                <button onclick="Reset()">Reset</button>
+                <div id="printArt">
+                    <div id="tableContainer"></div><br>
+                    <table id="resultTable">
+                        <thead>
+                            <tr>
+                                <th>Box Number</th>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be inserted here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="container()">Print</button>
+            </div>
+        </center>
+        <br>
+        <center>
+            <div id="containerbox" class="containerbox">
+                <h2>Box number</h2>
+                <input type="number" id="styleCodeInputbox" placeholder="Box No.">
+                <button onclick="generateTablebox()">Generate</button>
+                <button onclick="Resetbox()">Reset</button>
+                <div id="PrintBox">
+                    <div id="tableContainerbox"></div><br>
+                    <table id="resultTablebox">
+                        <thead>
+                            <tr>
+                                <th>Style code</th>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be inserted here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="containerbox()">Print</button>
+            </div>
+        </center>
+        <br><br>
+        <div id="accordion"></div>
+        <div id="accordions"></div><br><br><br><br><br>
+        <button id="scrollToToptop" class="scroll-to-top">↑</button>
+        <button id="refresh" class="refresh">Refresh</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
