@@ -12,7 +12,23 @@
 
 <body>
     <div id="number-container">
-        <center>
+        <center><br><br>
+            <h2>Details</h2>
+            <input type="text" id="styleCodeInput1" placeholder="Start."
+                oninput="localStorage.setItem('styleCodeInput1', this.value)">
+            <input type="text" id="styleCodeInput2" placeholder="End."
+                oninput="localStorage.setItem('styleCodeInput2', this.value)">
+            <h3>Counting: <span id="detailscompletefull"></span></h3>
+            <hr><br>
+            <h2>Complete Articles</h2>
+            <input type="text" id="styleCodeInput3" placeholder="Start."
+                oninput="localStorage.setItem('styleCodeInput3', this.value)">
+            <input type="text" id="styleCodeInput4" placeholder="End."
+                oninput="localStorage.setItem('styleCodeInput4', this.value)">
+            <h3>Counting: <span id="detailscomplete"></span></h3>
+            <h3><span id="detailscompletearray"></span></h3>
+
+            <hr>
             <div id="container" class="container">
                 <h2>Art No.</h2>
                 <input type="text" id="styleCodeInput" placeholder="Art No.">

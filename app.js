@@ -2142,19 +2142,42 @@ const datas = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "Gray", "size": 11, "quantity": 1 },
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
 ]
+let styleCodeInput1 = localStorage.getItem('styleCodeInput1') || 1
+let styleCodeInput2 = localStorage.getItem('styleCodeInput2') || 213
+let styleCodeInput3 = localStorage.getItem('styleCodeInput3') || 1
+let styleCodeInput4 = localStorage.getItem('styleCodeInput4') || 213
 
-// let filteredData = datas.filter(item => item.box_number >= 1 && item.box_number <= 60);
-// let groupedData = filteredData.reduce((acc, item) => {
-//     let key = item.style_code + "-" + item.color;
-//     if (!acc[key]) {
-//         acc[key] = { ...item, totalQuantity: 0 };
-//     }
-//     acc[key].totalQuantity += item.quantity;
-//     return acc;
-// }, {});
-// let data = Object.values(groupedData).filter(item => item.totalQuantity === item.quantity);
+document.getElementById('detailscomplete').textContent = `${styleCodeInput3} to ${styleCodeInput4}`
+document.getElementById('detailscompletefull').textContent = `${styleCodeInput1} to ${styleCodeInput2}`
 
-let data = datas
+let filteredData = datas.filter(item => item.box_number >= styleCodeInput1 && item.box_number <= styleCodeInput2);
+
+let data = filteredData
+
+// Function to find fully covered articles in box numbers 1 to 60
+function findFullyCoveredArticles(data) {
+    // Group data by style_code
+    const articles = {};
+    data.forEach(item => {
+        if (!articles[item.style_code]) {
+            articles[item.style_code] = new Set();
+        }
+        articles[item.style_code].add(item.box_number);
+    });
+
+    const fullyCoveredArticles = [];
+    for (const [styleCode, boxNumbers] of Object.entries(articles)) {
+        const isFullyCovered = [...boxNumbers].every(box => box >= styleCodeInput3 && box <= styleCodeInput4);
+        if (isFullyCovered) {
+            fullyCoveredArticles.push(styleCode);
+        }
+    }
+
+    return fullyCoveredArticles;
+}
+
+const result = findFullyCoveredArticles(datas);
+document.getElementById('detailscompletearray').innerHTML = result.map(e => ' ' + e + ' ')
 
 const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
 const uniqueBoxNumber = [...new Set(data.map(item => item.box_number))].sort((a, b) => a - b); // Numerical sort
@@ -2337,7 +2360,7 @@ function createAccordionSections(title, quan, items, data) {
 
         // Set the innerHTML of the boxNumber element to the colored text
         boxNumber.innerHTML = coloredText;
-        
+
         boxNumber.style.width = '800px';
         boxNumber.style.overflow = 'auto';
         boxNumber.style.marginLeft = '20px';
