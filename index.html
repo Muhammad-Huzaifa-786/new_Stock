@@ -13,7 +13,13 @@
 <body>
     <div id="number-container">
         <center><br><br>
-            <h2>Details</h2>
+            <h2>Total Quantity</h2>
+            <input type="text" id="styleCodeInput5" placeholder="Start."
+                oninput="localStorage.setItem('styleCodeInput5', this.value)">
+            <input type="text" id="styleCodeInput6" placeholder="End."
+                oninput="localStorage.setItem('styleCodeInput6', this.value)">
+            <h3>Total : <span id="detailscompletefull6"></span></h3>
+            <hr><br><h2>Details</h2>
             <input type="text" id="styleCodeInput1" placeholder="Start."
                 oninput="localStorage.setItem('styleCodeInput1', this.value)">
             <input type="text" id="styleCodeInput2" placeholder="End."
