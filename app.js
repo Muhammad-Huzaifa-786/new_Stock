@@ -17637,6 +17637,22 @@ const datas = [
     }
 ]
 
+const toggleButton = document.getElementById("toggleButton");
+const articlesDiv = document.getElementById("articles");
+articlesDiv.style.display = "none"
+toggleButton.addEventListener("click", () => {
+    if (articlesDiv.style.display === "none") {
+        articlesDiv.style.display = "block";
+        toggleButton.textContent = "Hide Articles";
+        document.querySelector('#toggleButton').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    } else {
+        articlesDiv.style.display = "none";
+        toggleButton.textContent = "Show Articles";
+    }
+});
 
 let styleCodeInput1 = localStorage.getItem('styleCodeInput1') || 1
 let styleCodeInput2 = localStorage.getItem('styleCodeInput2') || 213
@@ -17646,7 +17662,7 @@ let styleCodeInput5 = localStorage.getItem('styleCodeInput5') || 1
 let styleCodeInput6 = localStorage.getItem('styleCodeInput6') || 213
 
 const totalQuantity = datas.reduce((total, entry) => {
-    if (entry.box_number >= styleCodeInput5  && entry.box_number <= styleCodeInput6) {
+    if (entry.box_number >= styleCodeInput5 && entry.box_number <= styleCodeInput6) {
         return total + entry.quantity;
     }
     return total;
@@ -17656,9 +17672,13 @@ document.getElementById('detailscomplete').textContent = `${styleCodeInput3} to 
 document.getElementById('detailscompletefull').textContent = `${styleCodeInput1} to ${styleCodeInput2}`
 document.getElementById('detailscompletefull6').textContent = ` ${styleCodeInput5} to ${styleCodeInput6} : ${totalQuantity}`
 
-let filteredData = datas.filter(item => item.box_number >= styleCodeInput1 && item.box_number <= styleCodeInput2);
+const excludedStyleCodes = (Object.keys(JSON.parse(localStorage.getItem('articleActions'))));
+let filteredData = datas.filter(item => item.box_number >= styleCodeInput1 && item.box_number <= styleCodeInput2 && !excludedStyleCodes.includes(item.style_code));
 
 let data = filteredData
+
+
+
 
 // Function to find fully covered articles in box numbers 1 to 60
 function findFullyCoveredArticles(data) {
@@ -18251,3 +18271,52 @@ function containerbox() {
     printWindow.document.close();
     printWindow.print();
 }
+
+const uniqueArticles = Array.from(
+    datas.reduce((map, article) => {
+        map.set(article.style_code, article);
+        return map;
+    }, new Map()).values()
+);
+
+const localStorageKey = "articleActions";
+let storedActions = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+const styleCodes = Object.keys(storedActions);
+
+
+function renderArticles() {
+    const articlesContainer = document.getElementById("articles");
+    articlesContainer.innerHTML = "";
+
+    uniqueArticles.forEach((article, index) => {
+        const articleDiv = document.createElement("div");
+        articleDiv.className = "article";
+
+        const articleInfo = document.createElement("div");
+        articleInfo.textContent = `${index + 1} , Style Code: ${article.style_code}`;
+
+        const button = document.createElement("button");
+        const isDeleted = storedActions[article.style_code]?.action === "delete";
+
+        button.textContent = isDeleted ? "Add" : "Delete";
+        button.className = `button ${isDeleted ? "add" : "delete"}`;
+        button.addEventListener("click", () => toggleAction(article.style_code, isDeleted));
+
+        articleDiv.appendChild(articleInfo);
+        articleDiv.appendChild(button);
+
+        articlesContainer.appendChild(articleDiv);
+    });
+}
+
+function toggleAction(styleCode, isDeleted) {
+    if (isDeleted) {
+        delete storedActions[styleCode];
+    } else {
+        storedActions[styleCode] = { action: "delete" };
+    }
+    localStorage.setItem(localStorageKey, JSON.stringify(storedActions));
+    renderArticles();
+}
+
+renderArticles();

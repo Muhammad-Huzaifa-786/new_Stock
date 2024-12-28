@@ -94,14 +94,16 @@ table tr td:first-child {
     overflow-x: auto;
 }
 
-#detailscompletearray{
+#detailscompletearray {
     overflow-x: auto !important;
     height: 50px !important;
     width: 90vw !important;
     display: inline-block;
-    white-space: nowrap; /* Prevents wrapping of text */
+    white-space: nowrap;
+    /* Prevents wrapping of text */
 
 }
+
 input {
     margin-bottom: 20px;
     padding: 10px;
@@ -119,7 +121,6 @@ input {
 
 button:hover {
     background-color: #000000;
-    /* Darker shade */
     color: azure;
     transition: 0.7s;
     border: 2px solid yellow;
@@ -144,7 +145,8 @@ button {
     border: 1px solid #ccc;
     margin-bottom: 5px;
     border-radius: 5px;
-} 
+}
+
 .accordion-header {
     background-color: #e6f7ff;
     cursor: pointer;
@@ -152,10 +154,11 @@ button {
     font-weight: bold;
     text-align: center;
 }
+
 .accordion-content {
     display: none;
     overflow: auto;
-    
+
     /* Initially hidden */
 
     padding: 10px;
@@ -255,11 +258,13 @@ button {
 }
 
 .scroll-to-top:hover {
-    background-color: #78b9ff;
+    background-color: lightblue;
     color: #000;
     border: none;
+    font-weight: bold;
     /* Darker blue on hover */
 }
+
 .refresh {
     position: fixed;
     bottom: 1px;
@@ -285,7 +290,60 @@ button {
     /* Darker blue on hover */
 }
 
-.abc{
+.abc {
     color: blue;
     font-size: 30px !important;
+}
+
+.article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.button {
+    padding: 2px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: red !important;
+    border: none;
+}
+
+.add:hover {
+    background-color: green !important;
+    border: none;
+}
+
+.delete {
+    background-color: red;
+    height: 25px;
+    color: white;
+    margin-top: 8px !important;
+}
+
+.add {
+    background-color: green;
+    margin-top: 8px !important;
+    color: white;
+    height: 25px;
+}
+
+#toggleButton {
+    font-size: 17px;
+    background-color: #e6f7ff;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 100%;
+    color: black;
+    cursor: pointer;
 }
