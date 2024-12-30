@@ -15551,15 +15551,18 @@ function findFullyCoveredArticles(data) {
 
     const fullyCoveredArticles = [];
     for (const [styleCode, boxNumbers] of Object.entries(articles)) {
-        const isFullyCovered = [...boxNumbers].every(box => box >= styleCodeInput3 && box <= styleCodeInput4);
-        if (isFullyCovered) {
+        
+        const isFullyCovered = [...boxNumbers].every(box => box >= styleCodeInput3 && box <= styleCodeInput4 )
+        ;
+        
+        if (isFullyCovered && !excludedStyleCodes.includes(styleCode)) {
             fullyCoveredArticles.push(styleCode);
         }
     }
 
     return fullyCoveredArticles;
 }
-
+// && !excludedStyleCodes.includes(item.style_code)
 const result = findFullyCoveredArticles(datas);
 document.getElementById('detailscompletearray').innerHTML = result.map(e => ' ' + e + ' ')
 
